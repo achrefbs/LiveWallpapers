@@ -53,7 +53,7 @@ class _ScrollMenuItemState extends State<ScrollMenuItem> {
             color: kMainColor,
             border: helper.index == widget.index
                 ? const Border(
-                    bottom: BorderSide(color: Colors.white, width: 5.0))
+                    bottom: BorderSide(color: Colors.white, width: 3.0))
                 : null),
         child: Center(
             child: Text(

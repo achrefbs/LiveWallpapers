@@ -22,9 +22,11 @@ class WallpapersPage extends StatelessWidget {
           crossAxisCount: 3,
           childAspectRatio: 9 / 16,
         ),
-        itemCount: helper.getCategoryLength() - 1,
+        itemCount: category.wallpapers.length,
         itemBuilder: ((context, index) {
-          return const WallpaperCard();
+          return WallpaperCard(
+            url: category.wallpapers[index],
+          );
         }),
       ),
     );

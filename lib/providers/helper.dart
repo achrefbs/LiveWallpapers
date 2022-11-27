@@ -9,26 +9,32 @@ class Helper extends ChangeNotifier {
     const Category(
       name: "Home",
       image: "assets/images/nature.jpg",
+      wallpapers: [],
     ),
     const Category(
-      name: "City",
-      image: "assets/images/city.jpg",
+      name: "Nature",
+      image: "assets/categories/nature.jpg",
+      wallpapers: [],
     ),
     const Category(
       name: "Abstract",
-      image: "assets/images/abstract.jpg",
+      image: "assets/categories/abstract.jpg",
+      wallpapers: [],
     ),
     const Category(
-      name: "Animal",
-      image: "assets/images/animal.jpg",
+      name: "Animals",
+      image: "assets/categories/animals.jpg",
+      wallpapers: [],
     ),
     const Category(
-      name: "Car",
-      image: "assets/images/car.jpg",
+      name: "Anime",
+      image: "assets/categories/anime.jpg",
+      wallpapers: [],
     ),
     const Category(
-      name: "Love",
-      image: "assets/images/love.jpg",
+      name: "Games",
+      image: "assets/categories/games.jpg",
+      wallpapers: [],
     ),
   ];
 

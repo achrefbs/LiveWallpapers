@@ -13,6 +13,7 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Helper helper = Provider.of<Helper>(context);
     return Scaffold(
+      backgroundColor: kMainColor,
       appBar: AppBar(
         backgroundColor: kMainColor,
         title: const Text("Live Wallpaper"),
@@ -35,9 +36,9 @@ class MainScreen extends StatelessWidget {
             Expanded(
               child: PageView.builder(
                 controller: helper.pageController,
-                // onPageChanged: (value) {
-                //   helper.index = value;
-                // },
+                onPageChanged: (value) {
+                  helper.index = value;
+                },
                 itemCount: helper.getCategoryLength(),
                 itemBuilder: (context, index) {
                   if (index == 0) {
