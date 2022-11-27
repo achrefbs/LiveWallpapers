@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:live_wallpaper/category.dart';
+import 'package:live_wallpaper/models/category.dart';
 
 var categories = [
   const Category(

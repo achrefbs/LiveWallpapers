@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:live_wallpaper/category.dart';
-import 'package:live_wallpaper/helper.dart';
+import 'package:live_wallpaper/models/category.dart';
+import 'package:live_wallpaper/providers/helper.dart';
 import 'package:live_wallpaper/vars.dart';
 import 'package:provider/provider.dart';
 

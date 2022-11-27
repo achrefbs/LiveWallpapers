@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:live_wallpaper/helper.dart';
-import 'package:live_wallpaper/home_page.dart';
+import 'package:live_wallpaper/providers/helper.dart';
+import 'package:live_wallpaper/screens/home_page.dart';
 import 'package:provider/provider.dart';
 
 void main() {
