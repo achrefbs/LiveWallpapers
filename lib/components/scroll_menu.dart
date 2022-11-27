@@ -11,12 +11,14 @@ class ScrollMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Helper helper = Provider.of<Helper>(context);
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
         children: List.generate(
-          categories.length,
-          (index) => ScrollMenuItem(category: categories[index]),
+          helper.getCategoryLength(),
+          (index) =>
+              ScrollMenuItem(category: helper.getCategory(index), index: index),
         ),
       ),
     );
@@ -24,8 +26,10 @@ class ScrollMenu extends StatelessWidget {
 }
 
 class ScrollMenuItem extends StatefulWidget {
-  const ScrollMenuItem({Key? key, required this.category}) : super(key: key);
+  const ScrollMenuItem({Key? key, required this.category, required this.index})
+      : super(key: key);
   final Category category;
+  final int index;
   @override
   State<ScrollMenuItem> createState() => _ScrollMenuItemState();
 }
@@ -39,14 +43,15 @@ class _ScrollMenuItemState extends State<ScrollMenuItem> {
     Helper helper = Provider.of<Helper>(context);
     return GestureDetector(
       onTap: () {
-        helper.index = categories.indexOf(widget.category);
+        helper.index = widget.index;
+        helper.goToPage(widget.index);
       },
       child: Container(
         height: scrollMenuHeight,
         width: scrollMenuWidth,
         decoration: BoxDecoration(
             color: kMainColor,
-            border: helper.index == categories.indexOf(widget.category)
+            border: helper.index == widget.index
                 ? const Border(
                     bottom: BorderSide(color: Colors.white, width: 5.0))
                 : null),

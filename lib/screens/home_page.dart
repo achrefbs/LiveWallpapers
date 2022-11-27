@@ -1,64 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:live_wallpaper/providers/helper.dart';
-import 'package:live_wallpaper/components/nav_bar.dart';
-import 'package:live_wallpaper/components/scroll_menu.dart';
 import 'package:live_wallpaper/vars.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({super.key});
-
-  var pages = [const CategoriesPage()];
-
-  @override
-  Widget build(BuildContext context) {
-    Helper helper = Provider.of<Helper>(context);
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: kMainColor,
-        title: const Text("Live Wallpaper"),
-        elevation: 0,
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.menu),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.search),
-          ),
-        ],
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            const ScrollMenu(),
-            Expanded(
-              child: PageView.builder(
-                onPageChanged: (value) {
-                  helper.index = value;
-                },
-                itemCount: categories.length,
-                itemBuilder: (context, index) {
-                  return pages[index];
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: const NavBar(),
-    );
-  }
-}
-
-class CategoriesPage extends StatelessWidget {
-  const CategoriesPage({
+  const HomePage({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Helper helper = Provider.of<Helper>(context);
     return Container(
       color: kMainColor,
       child: GridView.builder(
@@ -66,7 +18,7 @@ class CategoriesPage extends StatelessWidget {
           crossAxisCount: 2,
           childAspectRatio: 2,
         ),
-        itemCount: categories.length,
+        itemCount: helper.getCategoryLength() - 1,
         itemBuilder: ((context, index) {
           return Container(
             height: 150,
@@ -81,7 +33,7 @@ class CategoriesPage extends StatelessWidget {
                 ),
             child: Center(
                 child: Text(
-              categories[index].name,
+              helper.getCategory(index + 1).name,
               style: const TextStyle(color: Colors.white),
             )),
           );

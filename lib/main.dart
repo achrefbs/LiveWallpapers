@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:live_wallpaper/providers/helper.dart';
-import 'package:live_wallpaper/screens/home_page.dart';
+import 'package:live_wallpaper/screens/Main_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -10,7 +10,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
             create: (context) => Helper(),
           ),
         ],
-        child: HomePage(),
+        child: MainScreen(),
       ),
     );
   }
