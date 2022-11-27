@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:live_wallpaper/providers/helper.dart';
-import 'package:live_wallpaper/screens/Main_screen.dart';
+import 'package:live_wallpaper/screens/main_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
             create: (context) => Helper(),
           ),
         ],
-        child: MainScreen(),
+        child: const MainScreen(),
       ),
     );
   }

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:live_wallpaper/providers/helper.dart';
-import 'package:live_wallpaper/components/nav_bar.dart';
 import 'package:live_wallpaper/components/scroll_menu.dart';
 import 'package:live_wallpaper/screens/home_page.dart';
+import 'package:live_wallpaper/screens/wallpapers_page.dart';
 import 'package:live_wallpaper/vars.dart';
 import 'package:provider/provider.dart';
 
 class MainScreen extends StatelessWidget {
-  MainScreen({super.key});
+  const MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,10 +41,11 @@ class MainScreen extends StatelessWidget {
                 itemCount: helper.getCategoryLength(),
                 itemBuilder: (context, index) {
                   if (index == 0) {
-                    return HomePage();
+                    return const HomePage();
                   } else {
-                    print("object");
-                    return Container();
+                    return WallpapersPage(
+                      category: helper.getCategory(index),
+                    );
                   }
                 },
               ),
@@ -52,7 +53,7 @@ class MainScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const NavBar(),
+      //bottomNavigationBar: const NavBar(),
     );
   }
 }
