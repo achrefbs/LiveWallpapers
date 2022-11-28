@@ -1,5 +1,6 @@
+import 'package:cached_video_player/cached_video_player.dart';
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
+import 'package:live_wallpaper/screens/open_wallpaper.dart';
 
 class WallpaperCard extends StatefulWidget {
   const WallpaperCard({
@@ -12,12 +13,12 @@ class WallpaperCard extends StatefulWidget {
 }
 
 class _WallpaperCardState extends State<WallpaperCard> {
-  late VideoPlayerController _controller;
+  late CachedVideoPlayerController _controller;
 
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset(
+    _controller = CachedVideoPlayerController.asset(
       widget.url,
       videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
     )..initialize().then((_) {
@@ -34,20 +35,31 @@ class _WallpaperCardState extends State<WallpaperCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(5),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Center(
-        child: _controller.value.isInitialized
-            ? VideoPlayer(
-                _controller,
-              )
-            : const CircularProgressIndicator(
-                strokeWidth: 0.8,
-                color: Colors.white,
-              ),
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => OpenWallpaper(
+              url: widget.url,
+            ),
+          ),
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Center(
+          child: _controller.value.isInitialized
+              ? CachedVideoPlayer(
+                  _controller,
+                )
+              : const CircularProgressIndicator(
+                  strokeWidth: 0.8,
+                  color: Colors.white,
+                ),
+        ),
       ),
     );
   }
