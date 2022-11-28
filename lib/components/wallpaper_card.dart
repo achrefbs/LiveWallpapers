@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class WallpaperCard extends StatefulWidget {
-  WallpaperCard({
+  const WallpaperCard({
     required this.url,
     Key? key,
   }) : super(key: key);
-  String url;
+  final String url;
   @override
   State<WallpaperCard> createState() => _WallpaperCardState();
 }
@@ -17,11 +17,10 @@ class _WallpaperCardState extends State<WallpaperCard> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.network(
+    _controller = VideoPlayerController.asset(
       widget.url,
       videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
     )..initialize().then((_) {
-        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
         setState(() {});
       });
   }
@@ -42,8 +41,10 @@ class _WallpaperCardState extends State<WallpaperCard> {
       ),
       child: Center(
         child: _controller.value.isInitialized
-            ? VideoPlayer(_controller)
-            : CircularProgressIndicator(
+            ? VideoPlayer(
+                _controller,
+              )
+            : const CircularProgressIndicator(
                 strokeWidth: 0.8,
                 color: Colors.white,
               ),
@@ -53,7 +54,7 @@ class _WallpaperCardState extends State<WallpaperCard> {
 
   @override
   void dispose() {
-    super.dispose();
     _controller.dispose();
+    super.dispose();
   }
 }

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:live_wallpaper/components/wallpaper_card.dart';
 import 'package:live_wallpaper/models/category.dart';
-import 'package:live_wallpaper/providers/helper.dart';
 import 'package:live_wallpaper/vars.dart';
-import 'package:provider/provider.dart';
 
 class WallpapersPage extends StatelessWidget {
   const WallpapersPage({
@@ -14,7 +12,6 @@ class WallpapersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Helper helper = Provider.of<Helper>(context);
     return Container(
       color: kMainColor,
       child: GridView.builder(
