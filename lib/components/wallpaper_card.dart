@@ -26,7 +26,7 @@ class _WallpaperCardState extends State<WallpaperCard> {
         );
       },
       child: Container(
-        padding: const EdgeInsets.all(5),
+        margin: const EdgeInsets.all(4),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           image: DecorationImage(

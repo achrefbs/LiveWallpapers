@@ -22,7 +22,7 @@ class Helper extends ChangeNotifier {
       image: "assets/categories/abstract.jpg",
       wallpapers: [
         Wallpaper(
-          img: "assets/animals/thumbnails/animals (1).jpg",
+          img: "assets/animals/thumbnails/animals(1).jpg",
           video: "assets/abstract/MOBILE-Neon-City-Sunrise.mp4",
         ),
       ],

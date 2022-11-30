@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:live_wallpaper/vars.dart';
 import 'package:video_player/video_player.dart';
+import 'package:async_wallpaper/async_wallpaper.dart';
 
 class OpenWallpaper extends StatefulWidget {
   const OpenWallpaper({super.key, required this.url});
@@ -24,6 +26,22 @@ class _OpenWallpaperState extends State<OpenWallpaper> {
     _initializeVideoPlayerFuture = _controller.initialize();
   }
 
+  //set the video as wallpaper
+  void setWallpaper() async {
+    String result;
+    try {
+      result = await AsyncWallpaper.setLiveWallpaper(
+        filePath: widget.url,
+        goToHome: true,
+      )
+          ? 'Wallpaper set'
+          : 'Failed to get wallpaper.';
+    } on PlatformException {
+      result = 'Failed to get wallpaper.';
+    }
+    print(result);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -32,16 +50,10 @@ class _OpenWallpaperState extends State<OpenWallpaper> {
           future: _initializeVideoPlayerFuture,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
-              // If the VideoPlayerController has finished initialization, use
-              // the data it provides to limit the aspect ratio of the video.
-              return AspectRatio(
-                aspectRatio: _controller.value.aspectRatio,
-                // Use the VideoPlayer widget to display the video.
-                child: VideoPlayer(_controller),
-              );
+              _controller.play();
+              _controller.setLooping(true);
+              return VideoPlayer(_controller);
             } else {
-              // If the VideoPlayerController is still initializing, show a
-              // loading spinner.
               return const Center(
                 child: CircularProgressIndicator(),
               );
@@ -49,7 +61,7 @@ class _OpenWallpaperState extends State<OpenWallpaper> {
           },
         ),
         Positioned(
-          bottom: 20,
+          bottom: 10,
           child: ElevatedButton(
             style: ButtonStyle(
               fixedSize: MaterialStateProperty.all(
@@ -63,7 +75,9 @@ class _OpenWallpaperState extends State<OpenWallpaper> {
                 ),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              setWallpaper();
+            },
             child: const Text(
               'Set Wallpaper',
               textAlign: TextAlign.center,
