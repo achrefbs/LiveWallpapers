@@ -17,18 +17,71 @@ class Helper extends ChangeNotifier {
       image: "assets/categories/nature.jpg",
       wallpapers: [],
     ),
-    const Category(
+    Category(
       name: "Abstract",
       image: "assets/categories/abstract.jpg",
-      wallpapers: [],
+      wallpapers: [
+        Wallpaper(
+          img: "assets/animals/thumbnails/animals (1).jpg",
+          video: "assets/abstract/MOBILE-Neon-City-Sunrise.mp4",
+        ),
+      ],
     ),
     Category(
       name: "Animals",
       image: "assets/categories/animals.jpg",
       wallpapers: [
         Wallpaper(
-          img: "assets/categories/animals.jpg",
-          video: "assets/animals/MOBILE-Aurora-Wolf.mp4",
+          img: "assets/animals/thumbnails/animals(1).jpg",
+          video: "assets/animals/animals(1).mp4",
+        ),
+        Wallpaper(
+          img: "assets/animals/thumbnails/animals(2).jpg",
+          video: "assets/animals/animals(2).mp4",
+        ),
+        Wallpaper(
+          img: "assets/animals/thumbnails/animals(3).jpg",
+          video: "assets/animals/animals(3).mp4",
+        ),
+        Wallpaper(
+          img: "assets/animals/thumbnails/animals(4).jpg",
+          video: "assets/animals/animals(4).mp4",
+        ),
+        Wallpaper(
+          img: "assets/animals/thumbnails/animals(5).jpg",
+          video: "assets/animals/animals(5).mp4",
+        ),
+        Wallpaper(
+          img: "assets/animals/thumbnails/animals(6).jpg",
+          video: "assets/animals/animals(6).mp4",
+        ),
+        Wallpaper(
+          img: "assets/animals/thumbnails/animals(7).jpg",
+          video: "assets/animals/animals(7).mp4",
+        ),
+        Wallpaper(
+          img: "assets/animals/thumbnails/animals(8).jpg",
+          video: "assets/animals/animals(8).mp4",
+        ),
+        Wallpaper(
+          img: "assets/animals/thumbnails/animals(9).jpg",
+          video: "assets/animals/animals(9).mp4",
+        ),
+        Wallpaper(
+          img: "assets/animals/thumbnails/animals(10).jpg",
+          video: "assets/animals/animals(10).mp4",
+        ),
+        Wallpaper(
+          img: "assets/animals/thumbnails/animals(11).jpg",
+          video: "assets/animals/animals(11).mp4",
+        ),
+        Wallpaper(
+          img: "assets/animals/thumbnails/animals(12).jpg",
+          video: "assets/animals/animals(12).mp4",
+        ),
+        Wallpaper(
+          img: "assets/animals/thumbnails/animals(13).jpg",
+          video: "assets/animals/animals(13).mp4",
         ),
       ],
     ),

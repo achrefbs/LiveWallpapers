@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:live_wallpaper/models/wallpaper.dart';
 import 'package:live_wallpaper/screens/open_wallpaper.dart';
@@ -15,8 +13,6 @@ class WallpaperCard extends StatefulWidget {
 }
 
 class _WallpaperCardState extends State<WallpaperCard> {
-  late Future<Uint8List?> uint8listImg;
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -33,9 +29,12 @@ class _WallpaperCardState extends State<WallpaperCard> {
         padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-        ),
-        child: Center(
-          child: Image.asset(widget.wallpaper.img),
+          image: DecorationImage(
+            image: AssetImage(
+              widget.wallpaper.img,
+            ),
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );

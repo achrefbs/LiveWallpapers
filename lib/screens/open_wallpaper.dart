@@ -1,6 +1,6 @@
-import 'package:cached_video_player/cached_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:live_wallpaper/vars.dart';
+import 'package:video_player/video_player.dart';
 
 class OpenWallpaper extends StatefulWidget {
   const OpenWallpaper({super.key, required this.url});
@@ -11,39 +11,43 @@ class OpenWallpaper extends StatefulWidget {
 }
 
 class _OpenWallpaperState extends State<OpenWallpaper> {
-  late CachedVideoPlayerController _controller;
+  late VideoPlayerController _controller;
+  late Future<void> _initializeVideoPlayerFuture;
 
   @override
   void initState() {
     super.initState();
-    _controller = CachedVideoPlayerController.asset(
-      widget.url,
-    )..initialize().then((_) {
-        setState(() {});
-      });
-  }
 
-  @override
-  void didChangeDependencies() {
-    _controller.play();
-    _controller.setLooping(true);
-    super.didChangeDependencies();
+    _controller = VideoPlayerController.asset(
+      widget.url,
+    );
+    _initializeVideoPlayerFuture = _controller.initialize();
   }
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        _controller.value.isInitialized
-            ? CachedVideoPlayer(
-                _controller,
-              )
-            : const Center(
-                child: CircularProgressIndicator(
-                  strokeWidth: 0.8,
-                  color: Colors.white,
-                ),
-              ),
+        FutureBuilder(
+          future: _initializeVideoPlayerFuture,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              // If the VideoPlayerController has finished initialization, use
+              // the data it provides to limit the aspect ratio of the video.
+              return AspectRatio(
+                aspectRatio: _controller.value.aspectRatio,
+                // Use the VideoPlayer widget to display the video.
+                child: VideoPlayer(_controller),
+              );
+            } else {
+              // If the VideoPlayerController is still initializing, show a
+              // loading spinner.
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
+        ),
         Positioned(
           bottom: 20,
           child: ElevatedButton(
