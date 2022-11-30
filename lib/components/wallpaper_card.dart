@@ -1,37 +1,21 @@
-import 'package:cached_video_player/cached_video_player.dart';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:live_wallpaper/models/wallpaper.dart';
 import 'package:live_wallpaper/screens/open_wallpaper.dart';
 
 class WallpaperCard extends StatefulWidget {
   const WallpaperCard({
-    required this.url,
+    required this.wallpaper,
     Key? key,
   }) : super(key: key);
-  final String url;
+  final Wallpaper wallpaper;
   @override
   State<WallpaperCard> createState() => _WallpaperCardState();
 }
 
 class _WallpaperCardState extends State<WallpaperCard> {
-  late CachedVideoPlayerController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = CachedVideoPlayerController.asset(
-      widget.url,
-      videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
-    )..initialize().then((_) {
-        setState(() {});
-      });
-  }
-
-  @override
-  void didChangeDependencies() {
-    _controller.play();
-    _controller.setLooping(true);
-    super.didChangeDependencies();
-  }
+  late Future<Uint8List?> uint8listImg;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +24,7 @@ class _WallpaperCardState extends State<WallpaperCard> {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => OpenWallpaper(
-              url: widget.url,
+              url: widget.wallpaper.video,
             ),
           ),
         );
@@ -51,22 +35,9 @@ class _WallpaperCardState extends State<WallpaperCard> {
           borderRadius: BorderRadius.circular(10),
         ),
         child: Center(
-          child: _controller.value.isInitialized
-              ? CachedVideoPlayer(
-                  _controller,
-                )
-              : const CircularProgressIndicator(
-                  strokeWidth: 0.8,
-                  color: Colors.white,
-                ),
+          child: Image.asset(widget.wallpaper.img),
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 }

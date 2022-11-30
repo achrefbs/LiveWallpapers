@@ -39,7 +39,7 @@ dependencies:
   provider:
   cached_video_player:
   async_wallpaper: ^2.0.1
-
+  video_thumbnail:
 
 dev_dependencies:
   flutter_test:

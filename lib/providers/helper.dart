@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:live_wallpaper/models/category.dart';
+import 'package:live_wallpaper/models/wallpaper.dart';
 
 class Helper extends ChangeNotifier {
   PageController pageController = PageController();
@@ -19,28 +20,16 @@ class Helper extends ChangeNotifier {
     const Category(
       name: "Abstract",
       image: "assets/categories/abstract.jpg",
-      wallpapers: [
-        "assets/abstract/MOBILE-Neon-City-Sunrise.mp4",
-        "assets/abstract/MOBILE-Retro-Neon-Car.mp4"
-      ],
+      wallpapers: [],
     ),
-    const Category(
+    Category(
       name: "Animals",
       image: "assets/categories/animals.jpg",
       wallpapers: [
-        "assets/animals/MOBILE-Aurora-Wolf.mp4",
-        "assets/animals/MOBILE-Cats-by-the-Window.mp4",
-        "assets/animals/MOBILE-Deer-and-Fawn.mp4",
-        "assets/animals/MOBILE-Forest-Fox-Waterfall.mp4",
-        "assets/animals/MOBILE-Glowing-Deer.mp4",
-        "assets/animals/MOBILE-Lone-Wolf.mp4",
-        "assets/animals/MOBILE-Misty-Wolves.mp4",
-        "assets/animals/MOBILE-Neon-Tiger-Drinking.mp4",
-        "assets/animals/MOBILE-Panther-Sparkle-Eyes.mp4",
-        "assets/animals/MOBILE-Setting-Sun-Swan.mp4",
-        "assets/animals/MOBILE-Shiba-Inu.mp4",
-        // "assets/animals/MOBILE-Swan.mp4",
-        // "assets/animals/MOBILE-Wolf.mp4",
+        Wallpaper(
+          img: "assets/categories/animals.jpg",
+          video: "assets/animals/MOBILE-Aurora-Wolf.mp4",
+        ),
       ],
     ),
     const Category(

@@ -22,7 +22,7 @@ class WallpapersPage extends StatelessWidget {
         itemCount: category.wallpapers.length,
         itemBuilder: ((context, index) {
           return WallpaperCard(
-            url: category.wallpapers[index],
+            wallpaper: category.wallpapers[index],
           );
         }),
       ),
