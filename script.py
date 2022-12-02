@@ -2,7 +2,7 @@ import cv2
 from os import listdir
 from os.path import isfile, join
 
-dir = 'assets/animals/'
+dir = 'assets/abstract/'
 
 onlyfiles = [f for f in listdir(dir) if isfile(join(dir, f))]
 print(onlyfiles)

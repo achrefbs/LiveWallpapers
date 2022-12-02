@@ -38,7 +38,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   provider:
   video_player:
-  async_wallpaper: ^2.0.1
+  async_wallpaper:
+  flutter_cache_manager: ^3.3.0
 
 dev_dependencies:
   flutter_test:
@@ -65,9 +66,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/categories/
-    - assets/animals/
-    - assets/abstract/
     - assets/animals/thumbnails/
+    - assets/abstract/thumbnails/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

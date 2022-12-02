@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:live_wallpaper/vars.dart';
 import 'package:video_player/video_player.dart';
 import 'package:async_wallpaper/async_wallpaper.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 class OpenWallpaper extends StatefulWidget {
   const OpenWallpaper({super.key, required this.url});
@@ -20,7 +21,7 @@ class _OpenWallpaperState extends State<OpenWallpaper> {
   void initState() {
     super.initState();
 
-    _controller = VideoPlayerController.asset(
+    _controller = VideoPlayerController.network(
       widget.url,
     );
     _initializeVideoPlayerFuture = _controller.initialize();
@@ -29,17 +30,24 @@ class _OpenWallpaperState extends State<OpenWallpaper> {
   //set the video as wallpaper
   void setWallpaper() async {
     String result;
-    try {
-      result = await AsyncWallpaper.setLiveWallpaper(
-        filePath: widget.url,
-        goToHome: true,
-      )
-          ? 'Wallpaper set'
-          : 'Failed to get wallpaper.';
-    } on PlatformException {
-      result = 'Failed to get wallpaper.';
-    }
-    print(result);
+    var file = await DefaultCacheManager()
+        .getSingleFile(
+      widget.url,
+    )
+        .then((value) async {
+      try {
+        print(value.path);
+        result = await AsyncWallpaper.setLiveWallpaper(
+          filePath: value.path,
+          goToHome: true,
+        )
+            ? 'Wallpaper set'
+            : 'Failed to get wallpaper.';
+      } on PlatformException {
+        result = 'Failed to get wallpaper.';
+      }
+    });
+// Platform messages may fail, so we use a try/catch PlatformException.
   }
 
   @override
