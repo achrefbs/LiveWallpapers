@@ -29,14 +29,14 @@ class _OpenWallpaperState extends State<OpenWallpaper> {
 
   //set the video as wallpaper
   void setWallpaper() async {
+    // ignore: unused_local_variable
     String result;
-    var file = await DefaultCacheManager()
+    await DefaultCacheManager()
         .getSingleFile(
       widget.url,
     )
         .then((value) async {
       try {
-        print(value.path);
         result = await AsyncWallpaper.setLiveWallpaper(
           filePath: value.path,
           goToHome: true,
@@ -47,7 +47,6 @@ class _OpenWallpaperState extends State<OpenWallpaper> {
         result = 'Failed to get wallpaper.';
       }
     });
-// Platform messages may fail, so we use a try/catch PlatformException.
   }
 
   @override

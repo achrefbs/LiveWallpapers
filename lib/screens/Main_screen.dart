@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:live_wallpaper/providers/helper.dart';
 import 'package:live_wallpaper/components/scroll_menu.dart';
