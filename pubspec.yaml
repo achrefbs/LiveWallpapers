@@ -68,6 +68,16 @@ flutter:
     - assets/categories/
     - assets/animals/thumbnails/
     - assets/abstract/thumbnails/
+    - assets/anime/thumbnails/
+    - assets/cars/thumbnails/
+    - assets/city/thumbnails/
+    - assets/comics/thumbnails/
+    - assets/fantasy/thumbnails/
+    - assets/games/thumbnails/
+    - assets/love/thumbnails/
+    - assets/nature/thumbnails/
+    - assets/scifi/thumbnails/
+    - assets/tvmovie/thumbnails/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
