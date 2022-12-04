@@ -1,4 +1,4 @@
-package com.example.live_wallpaper
+package com.softhub.premiumlivewallpapers
 
 import io.flutter.embedding.android.FlutterActivity
 

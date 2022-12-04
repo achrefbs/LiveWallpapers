@@ -16,6 +16,7 @@ class OpenWallpaper extends StatefulWidget {
 class _OpenWallpaperState extends State<OpenWallpaper> {
   late VideoPlayerController _controller;
   late Future<void> _initializeVideoPlayerFuture;
+  bool loading = false;
 
   @override
   void initState() {
@@ -83,12 +84,17 @@ class _OpenWallpaperState extends State<OpenWallpaper> {
               ),
             ),
             onPressed: () {
+              setState(() {
+                loading = true;
+              });
               setWallpaper();
             },
-            child: const Text(
-              'Set Wallpaper',
-              textAlign: TextAlign.center,
-            ),
+            child: loading
+                ? const CircularProgressIndicator()
+                : const Text(
+                    'Set Wallpaper',
+                    textAlign: TextAlign.center,
+                  ),
           ),
         ),
       ],

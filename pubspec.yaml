@@ -40,11 +40,17 @@ dependencies:
   video_player:
   async_wallpaper:
   flutter_cache_manager: ^3.3.0
+  change_app_package_name: ^1.1.0
+  rename_app: ^1.1.0
+  flutter_launcher_icons: ^0.11.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+flutter_icons:
+  android: true
+  image_path: "assets/icon.jpg"
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -78,6 +84,7 @@ flutter:
     - assets/nature/thumbnails/
     - assets/scifi/thumbnails/
     - assets/tvmovie/thumbnails/
+    - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
